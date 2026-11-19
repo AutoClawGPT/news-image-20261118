@@ -82,6 +82,12 @@ const FONT = {
   I: ['11111', '00100', '00100', '00100', '00100', '00100', '11111'],
   M: ['10001', '11011', '10101', '10101', '10001', '10001', '10001'],
   C: ['01110', '10001', '10000', '10000', '10000', '10001', '01110'],
+  B: ['11110', '10001', '10001', '11110', '10001', '10001', '11110'],
+  G: ['01110', '10001', '10000', '10111', '10001', '10001', '01110'],
+  K: ['10001', '10010', '10100', '11000', '10100', '10010', '10001'],
+  Y: ['10001', '10001', '01010', '00100', '00100', '00100', '00100'],
+  F: ['11111', '10000', '10000', '11110', '10000', '10000', '10000'],
+  '9': ['01110', '10001', '10001', '01111', '00001', '00001', '01110'],
   '0': ['01110', '10001', '10011', '10101', '11001', '10001', '01110'],
   '1': ['00100', '01100', '00100', '00100', '00100', '00100', '01110'],
   '2': ['01110', '10001', '00001', '00010', '00100', '01000', '11111'],
@@ -105,9 +111,11 @@ function drawText(x, y, text, scale, r, g, b) {
 fillRect(0, 0, W, H, 246, 241, 231);            // cream background
 fillRect(0, 0, W, 78, 25, 25, 25);             // black masthead band at top
 fillRect(0, 78, W, 10, 200, 30, 30);           // red horizontal rule
-fillCircle(W / 2, 512, 210, 40, 64, 110, 200); // blue globe circle in the middle
 drawText(40, 20, 'THE WORLD', 6, 246, 241, 231);
 drawText(40, 104, 'WORLD NEWS', 3, 200, 30, 30);
 drawText(40, 140, 'NOVEMBER 18 2026', 3, 25, 25, 25);
-for (let i = 0; i < 5; i++) { fillRect(40 + i * 192, 680, 180, 190, 205, 205, 195); drawText(50 + i * 192, 700, ['EUROPE', 'ASIA', 'AMERICAS', 'MID EAST', 'OCEANIA'][i], 2, 25, 25, 25); }
+drawText(40, 190, 'CRIMEA BRIDGE HIT AGAIN', 4, 200, 30, 30);
+fillRect(40, 282, 944, 4, 25, 25, 25);
+const stories = ['UKRAINE STRIKES CRIMEA BRIDGE', 'ISRAEL GAZA OPERATION', 'VAN GOGH ART RECORD 190M', 'BANGLADESH GARMENT WAGE PROTESTS', 'VOYAGER ONE LIGHT DAY FROM EARTH', 'US MILITARY PACT WITH COLOMBIA', 'PLAYSTATION OUTAGE BEFORE GTA VI', 'ITALY TEEN SOCIAL MEDIA CURBS'];
+for (let i = 0; i < 8; i++) { const col = i % 2, row = Math.floor(i / 2); const bx = 40 + col * 472, by = 300 + row * 165; fillRect(bx, by, 456, 150, 232, 226, 212); drawText(bx + 12, by + 16, stories[i], 2, 25, 25, 25); }
 writeFileSync(`${process.env.MAKEFUN_OUTPUT_DIR ?? '/output'}/entry.png`, encode());
